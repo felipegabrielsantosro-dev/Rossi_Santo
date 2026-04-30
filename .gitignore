@@ -1,0 +1,8 @@
+/vendor
+/vendors
+/tmp
+/logs
+/docker/postgres/storage
+/docker/redis/storage
+.env
+node_modules/
