@@ -3,20 +3,19 @@
 declare(strict_types=1);
 
 arch('todos os arquivos usam strict types')
-    ->expect('App')
+    ->expect('app')
     ->toUseStrictTypes();
 
 arch('sem debug no código de produção')
-    ->expect('App')
-    ->not->toUse(['var_dump', 'dd', 'dump', 'die']);
+    ->expect('app')
+    ->not->toUse(['var_dump', 'dd', 'dump', 'die', 'print_r', 'var_export']);
 
 arch('controllers não acessam banco direto')
     ->expect('app\controller')
-    ->not->toUse('PDO');
+    ->not->toUse(['PDO', 'mysqli', 'pg_connect']);
 
-#Nenhuma classe deve usar funções perigosas
 arch('sem funções perigosas no código')
-    ->expect('App')
+    ->expect('app')
     ->not->toUse([
         'eval',
         'exec',
@@ -24,10 +23,24 @@ arch('sem funções perigosas no código')
         'system',
         'passthru',
         'proc_open',
+        'popen',
+        'base64_decode',
     ]);
 
-#Garantir que classes são finais ou abstratas
 arch('controllers devem ser classes finais')
     ->expect('app\controller')
     ->toBeFinal()
     ->ignoring('app\controller\Base');
+
+arch('middlewares devem ser classes finais')
+    ->expect('app\middleware')
+    ->toBeFinal();
+
+arch('controllers devem estender Base')
+    ->expect('app\controller')
+    ->toExtend('app\controller\Base')
+    ->ignoring('app\controller\Base');
+
+arch('middleware não acessa banco direto')
+    ->expect('app\middleware')
+    ->not->toUse(['PDO', 'mysqli', 'pg_connect']);

@@ -1,0 +1,1 @@
+const buttonPreregister = document.getElementById('buttonPreregister')

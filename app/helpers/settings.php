@@ -7,3 +7,5 @@ define('ROOT', dirname(__FILE__, 3));
 define('DIR_VIEWS', ROOT . '/app/view');
 #EXTENSÃO PADRÃO DAS VIEWS
 define('EXT_VIEWS', '.html');
+
+define('SECRET_KEY','8632b773-dda6-4164-bf3e-e3027d496375');
