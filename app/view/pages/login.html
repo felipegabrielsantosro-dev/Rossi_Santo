@@ -10,7 +10,6 @@
 
 <body>
     <form id="form">
-
         <div class="modal fade" id="modalPreRegisterUser" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="modalPreRegisterUserLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -51,27 +50,26 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" id="telefone" name="telefone" class="form-control"
+                                    <input type="tel" id="telefone" name="telefone" class="form-control"
                                         placeholder="name@example.com">
-                                    <label for="rg">Digite seu Telefone</label>
+                                    <label for="telefone">Digite seu telefone</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" id="e-mail" name="e-mail" class="form-control"
+                                    <input type="email" id="email" name="email" class="form-control"
                                         placeholder="name@example.com">
-                                    <label for="rg">Digite seu E-mail</label>
+                                    <label for="email">Digite seu E-mail</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" id="senha" name="senha" class="form-control"
+                                    <input type="password" id="senha" name="senha" class="form-control"
                                         placeholder="name@example.com">
-                                    <label for="rg">Digite sua Senha</label>
+                                    <label for="senha">Digite sua senha</label>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="buttonPreRegister" class="btn btn-outline-success">
@@ -92,26 +90,25 @@
                         <div class="card-body">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="login" name="login"
-                                    placeholder="name@example.com" autofocus>
-                                <label for="login">Login, CPF ou Telefone ou E-mail</label>
+                                    placeholder="name@example.com" autofocus required>
+                                <label for="login">Login, CPF ou Telefone ou E-mail *</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" id="senha" name="senha"
-                                    placeholder="name@example.com">
-                                <label for="senha">Informe sua senha</label>
+                                    placeholder="name@example.com" required>
+                                <label for="senha">Informe sua senha *</label>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     Ainda não tenho conta faça aqui seu:
-                                    <button type="button" class="btn btn-link" data-bs-toggle="modal"
-                                        data-bs-target="#modalPreRegisterUser">
+                                    <button type="button" class="btn btn-link" id="mdPreRegister">
                                         Pré-cadastro
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button id="login" type="button" class="btn btn-success" id="login">
+                            <button type="button" class="btn btn-success" id="buttonLogin">
                                 Login
                             </button>
                             <button id="loginGoogle" type="button" class="btn btn-primary">
@@ -124,6 +121,7 @@
         </div>
     </form>
     {{ vite('resources/js/app.js') }}
+    {{ vite('resources/js/pages/login.js') }}
 </body>
 
 </html>

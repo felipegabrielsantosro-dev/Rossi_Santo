@@ -27,7 +27,7 @@ class Middleware
                 #Resposta JSON padronizada no mesmo contrato usado pelo Login::auth.
                 $response->getBody()->write(json_encode(['status' => false, 'msg' => 'Sessão expirada ou não autenticada.', 'id' => 0]));
                 #Status 401 é o código semântico correto para credencial inválida.
-                return $response->withHeader('Content-Type', 'application/json')->withStatus(403);
+                return $response->withHeader('Content-Type', 'application/json')->withStatus(401);
             }
             #Credenciais íntegras: encaminha a requisição ao próximo handler do Slim.
             return $handler->handle($request);

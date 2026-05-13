@@ -48,7 +48,7 @@ final class Customer extends Base
             'cpf_cnpj' => $form['numeroDocumento'] ?? '',
             'inscricao_estadual' => $form['registroSecundario'] ?? '',
             'nascimento_fundacao' => $this->convertBrDateToDatabaseFormat($form['dataRegistro']),
-            'ativo'         => (int)(($form['ativo']         ?? '') === 'true'),
+            'ativo' => ($form['ativo'] === 'true') ? true : false
         ];
         try {
             $IsInserted = \app\database\DB::connection()->insert('customer', $FieldsAndValues);
@@ -75,7 +75,7 @@ final class Customer extends Base
             'cpf_cnpj' => $form['numeroDocumento'] ?? null,
             'inscricao_estadual' => $form['registroSecundario'] ?? null,
             'nascimento_fundacao' => $this->convertBrDateToDatabaseFormat($form['dataRegistro']),
-            'ativo'         => (int)(($form['ativo']         ?? '') === 'true'),
+            'ativo' => ($form['ativo'] === 'true') ? true : false
         ];
         try {
             $IsUpdated = \app\database\DB::connection()->update('customer', $FieldsAndValues, ['id' => $id]);
