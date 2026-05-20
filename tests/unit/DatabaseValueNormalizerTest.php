@@ -6,6 +6,7 @@ declare(strict_types=1);
 class NormalizerStub
 {
     use App\Trait\DatabaseValueNormalizer;
+    
 }
 
 # Instancia o stub antes de cada teste

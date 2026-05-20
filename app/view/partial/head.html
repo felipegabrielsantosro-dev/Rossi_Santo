@@ -1,34 +1,90 @@
-<nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Senac</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Senac
+        </a>
+
+        <!-- Botão Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Menu -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <!-- Home -->
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">
-                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house me-1"></i>
                         Home
                     </a>
                 </li>
+
+                <!-- Cadastro -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+
+                    <a class="nav-link dropdown-toggle" href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fa-solid fa-plus"></i>
-                        Cadastro
+
+                        <i class="fa-solid fa-folder-plus me-1"></i>
+                        Cadastros
                     </a>
-                    <ul class="dropdown-menu">
+
+                    <ul class="dropdown-menu shadow border-0">
+
                         <li>
                             <a class="dropdown-item" href="/cliente/lista">
-                                <i class="fa-solid fa-user-plus"></i>
+                                <i class="fa-solid fa-user me-2 text-primary"></i>
                                 Cliente
                             </a>
                         </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/fornecedor/lista">
+                                <i class="fa-solid fa-truck me-2 text-success"></i>
+                                Fornecedor
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/empresa/lista">
+                                <i class="fa-solid fa-building me-2 text-warning"></i>
+                                Empresa
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/produto/lista">
+                                <i class="fa-solid fa-box me-2 text-danger"></i>
+                                Produto
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
+
             </ul>
+
+            <!-- Botão Sair -->
+            <div class="d-flex">
+                <a href="/logout" class="btn btn-light text-danger fw-bold">
+                    <i class="fa-solid fa-xmark me-1"></i>
+                    Sair
+                </a>
+            </div>
+
         </div>
     </div>
 </nav>
