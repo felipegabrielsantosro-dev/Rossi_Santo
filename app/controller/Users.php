@@ -186,10 +186,12 @@ final class Users extends Base
         $columns = [
             0 => 'id',
             1 => 'nome',
-            2 => 'email',
-            3 => 'ativo',
-            4 => 'criado_em',
-            5 => 'atualizado_em',
+            2 => 'cpf',
+            3 => 'rg',
+            4 => 'email',
+            5 => 'ativo',
+            6 => 'criado_em',
+            7 => 'atualizado_em',
         ];
 
         $posField = (
