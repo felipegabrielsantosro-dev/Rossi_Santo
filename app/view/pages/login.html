@@ -2,17 +2,17 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Autenticação do Sistema</title>
 
     {{ vite('resources/css/app.css') }}
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
         body {
@@ -32,9 +32,10 @@
         .auth-card {
             overflow: hidden;
             border-radius: 28px;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, .15);
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
         }
 
         .auth-banner {
@@ -83,13 +84,25 @@
         }
 
         .btn-google {
+            background: #fff;
             border: 1px solid #dee2e6;
-            transition: .2s ease;
+            color: #212529;
+            border-radius: 14px;
+            transition: all .25s ease;
+            font-weight: 600;
+            text-decoration: none;
         }
 
         .btn-google:hover {
             background: #f8f9fa;
-            transform: translateY(-1px);
+            border-color: #ced4da;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            color: #000;
+        }
+
+        .btn-google:active {
+            transform: scale(.98);
         }
 
         .divider {
@@ -125,27 +138,26 @@
             }
         }
     </style>
+
 </head>
 
 <body>
 
-    <form id="form">
-
-        <!-- MODAL -->
-        <div class="modal fade"
-            id="modalPreRegisterUser"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            tabindex="-1"
-            aria-labelledby="modalPreRegisterUserLabel"
-            aria-hidden="true">
+    <!-- ================= LOGIN ================= -->
+    <form id="form" novalidate>
+        <!-- ================= MODAL PRÉ-CADASTRO ================= -->
+        <div class="modal fade" id="modalPreRegisterUser" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="modalPreRegisterUserLabel" aria-hidden="true">
 
             <div class="modal-dialog modal-lg modal-dialog-centered">
+
                 <div class="modal-content border-0 shadow-lg">
 
+                    <!-- HEADER -->
                     <div class="modal-header border-0 px-4 pt-4">
 
                         <div>
+
                             <h2 class="fw-bold mb-1">
                                 Criar conta
                             </h2>
@@ -153,148 +165,151 @@
                             <p class="text-muted mb-0">
                                 Informe seus dados para continuar
                             </p>
+
                         </div>
 
-                        <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Fechar">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">
                         </button>
 
                     </div>
 
+                    <!-- BODY -->
                     <div class="modal-body px-4 py-4">
 
                         <div class="row g-3">
 
                             <div class="col-md-6">
+
                                 <div class="form-floating">
-                                    <input type="text"
-                                        id="nome"
-                                        name="nome"
-                                        class="form-control"
-                                        placeholder="Nome"
+
+                                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"
                                         required>
 
                                     <label for="nome">
                                         <i class="bi bi-person me-1"></i>
                                         Nome *
                                     </label>
+
                                 </div>
+
                             </div>
 
                             <div class="col-md-6">
+
                                 <div class="form-floating">
-                                    <input type="text"
-                                        id="sobrenome"
-                                        name="sobrenome"
-                                        class="form-control"
-                                        placeholder="Sobrenome"
-                                        required>
+
+                                    <input type="text" id="sobrenome" name="sobrenome" class="form-control"
+                                        placeholder="Sobrenome" required>
 
                                     <label for="sobrenome">
                                         <i class="bi bi-person-vcard me-1"></i>
                                         Sobrenome *
                                     </label>
+
                                 </div>
+
                             </div>
 
                             <div class="col-md-6">
+
                                 <div class="form-floating">
-                                    <input type="text"
-                                        id="cpf"
-                                        name="cpf"
-                                        class="form-control"
-                                        placeholder="CPF"
+
+                                    <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF"
                                         required>
 
                                     <label for="cpf">
                                         <i class="bi bi-card-text me-1"></i>
                                         CPF *
                                     </label>
+
                                 </div>
+
                             </div>
 
                             <div class="col-md-6">
+
                                 <div class="form-floating">
-                                    <input type="text"
-                                        id="rg"
-                                        name="rg"
-                                        class="form-control"
-                                        placeholder="RG">
+
+                                    <input type="text" id="rg" name="rg" class="form-control" placeholder="RG">
 
                                     <label for="rg">
                                         <i class="bi bi-credit-card-2-front me-1"></i>
                                         RG
                                     </label>
+
                                 </div>
+
                             </div>
 
                             <div class="col-md-6">
+
                                 <div class="form-floating">
-                                    <input type="tel"
-                                        id="telefone"
-                                        name="telefone"
-                                        class="form-control"
+
+                                    <input type="tel" id="telefone" name="telefone" class="form-control"
                                         placeholder="Telefone">
 
                                     <label for="telefone">
                                         <i class="bi bi-telephone me-1"></i>
                                         Telefone
                                     </label>
+
                                 </div>
+
                             </div>
 
                             <div class="col-md-6">
+
                                 <div class="form-floating">
-                                    <input type="email"
-                                        id="email"
-                                        name="email"
-                                        class="form-control"
+
+                                    <input type="email" id="email" name="email" class="form-control"
                                         placeholder="E-mail">
 
                                     <label for="email">
                                         <i class="bi bi-envelope me-1"></i>
                                         E-mail
                                     </label>
+
                                 </div>
+
                             </div>
 
                             <div class="col-12">
+
                                 <div class="form-floating">
-                                    <input type="password"
-                                        id="senhaCadastro"
-                                        name="senhaCadastro"
-                                        class="form-control"
-                                        placeholder="senhaCadastro">
+
+                                    <input type="password" id="senhaCadastro" name="senhaCadastro" class="form-control"
+                                        placeholder="Senha">
 
                                     <label for="senhaCadastro">
                                         <i class="bi bi-shield-lock me-1"></i>
                                         Senha
                                     </label>
+
                                 </div>
+
                             </div>
 
                         </div>
 
                     </div>
 
+                    <!-- FOOTER -->
                     <div class="modal-footer border-0 px-4 pb-4">
-                        <button type="button"
-                            id="buttonPreRegister"
-                            class="btn btn-success w-100 py-3 fw-semibold">
+
+                        <button type="button" id="buttonPreRegister" class="btn btn-success w-100 py-3 fw-semibold">
 
                             <i class="bi bi-check-circle-fill me-2"></i>
                             Salvar cadastro
 
                         </button>
+
                     </div>
 
                 </div>
-            </div>
-        </div>
 
-        <!-- LOGIN -->
+            </div>
+
+        </div>
         <div class="container auth-wrapper d-flex align-items-center justify-content-center">
 
             <div class="row w-100 justify-content-center">
@@ -319,7 +334,7 @@
                                         </div>
 
                                         <h1 class="fw-bold display-6 mb-3">
-                                            Sistema De alta Pôtencia neguinn
+                                            Sistema de Alta Potência
                                         </h1>
 
                                         <p class="fs-5 opacity-75">
@@ -331,6 +346,7 @@
                                     <div class="auth-banner-content">
 
                                         <div class="feature-item p-3 mb-3">
+
                                             <div class="d-flex align-items-center">
 
                                                 <div class="me-3">
@@ -338,6 +354,7 @@
                                                 </div>
 
                                                 <div>
+
                                                     <h6 class="fw-bold mb-1">
                                                         Segurança Avançada
                                                     </h6>
@@ -345,12 +362,15 @@
                                                     <small>
                                                         Proteção de dados e autenticação segura.
                                                     </small>
+
                                                 </div>
 
                                             </div>
+
                                         </div>
 
                                         <div class="feature-item p-3">
+
                                             <div class="d-flex align-items-center">
 
                                                 <div class="me-3">
@@ -358,6 +378,7 @@
                                                 </div>
 
                                                 <div>
+
                                                     <h6 class="fw-bold mb-1">
                                                         Acesso Inteligente
                                                     </h6>
@@ -365,9 +386,11 @@
                                                     <small>
                                                         Plataforma rápida, moderna e responsiva.
                                                     </small>
+
                                                 </div>
 
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -400,15 +423,11 @@
 
                                     </div>
 
+                                    <!-- LOGIN -->
                                     <div class="form-floating mb-3">
 
-                                        <input type="text"
-                                            class="form-control"
-                                            id="login"
-                                            name="login"
-                                            placeholder="Login"
-                                            autofocus
-                                            required>
+                                        <input type="text" class="form-control" id="login" name="login"
+                                            placeholder="Login" autofocus>
 
                                         <label for="login">
                                             <i class="bi bi-person me-1"></i>
@@ -417,14 +436,11 @@
 
                                     </div>
 
-                                    <div class="form-floating mb-2">
+                                    <!-- SENHA -->
+                                    <div class="form-floating mb-3">
 
-                                        <input type="password"
-                                            class="form-control"
-                                            id="senhaLogin"
-                                            name="senha"
-                                            placeholder="Senha"
-                                            required>
+                                        <input type="password" class="form-control" id="senhaLogin" name="senha"
+                                            placeholder="Senha">
 
                                         <label for="senhaLogin">
                                             <i class="bi bi-lock me-1"></i>
@@ -433,12 +449,10 @@
 
                                     </div>
 
-                            
+                                    <!-- BOTÃO LOGIN -->
                                     <div class="d-grid mb-3">
 
-                                        <button type="button"
-                                            class="btn btn-success py-3 fw-semibold"
-                                            id="buttonLogin">
+                                        <button type="button" class="btn btn-success py-3 fw-semibold" id="buttonLogin">
 
                                             <i class="bi bi-box-arrow-in-right me-2"></i>
                                             Entrar no sistema
@@ -447,27 +461,26 @@
 
                                     </div>
 
+                                    <!-- DIVIDER -->
                                     <div class="divider mb-3">
                                         ou continue com
                                     </div>
 
+                                    <!-- GOOGLE LOGIN -->
                                     <div class="d-grid mb-4">
-
-                                        <button id="loginGoogle"
-                                            type="button"
-                                            class="btn btn-google py-3 fw-semibold">
-
-                                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-                                                width="20"
-                                                class="me-2"
-                                                alt="Google">
-
-                                            Entrar com Google
-
-                                        </button>
+                                        <div id="g_id_onload"
+                                            data-client_id="310364405497-lolihka0ijrras829jf5b1ceg37bodjt.apps.googleusercontent.com"
+                                            data-context="signin" data-ux_mode="popup"
+                                            data-login_uri="/authentication/google" data-itp_support="true">
+                                        </div>
+                                        <div class="g_id_signin" data-type="standard" data-shape="rectangular"
+                                            data-theme="outline" data-text="signin_with" data-size="large"
+                                            data-logo_alignment="left">
+                                        </div>
 
                                     </div>
 
+                                    <!-- CADASTRO -->
                                     <div class="text-center">
 
                                         <span class="text-muted">
@@ -476,7 +489,8 @@
 
                                         <button type="button"
                                             class="btn btn-link text-success fw-bold text-decoration-none p-0 ms-1"
-                                            id="mdPreRegister">
+                                            id="mdPreRegister" data-bs-toggle="modal"
+                                            data-bs-target="#modalPreRegisterUser">
 
                                             Fazer pré-cadastro
 
@@ -502,6 +516,9 @@
 
     {{ vite('resources/js/app.js') }}
     {{ vite('resources/js/pages/login.js') }}
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
