@@ -188,8 +188,7 @@ final class Login extends Base
         // chave é o nome da coluna no banco de dados e o valor é o dado
         // informado pelo usuário.
         $DataUser = [
-            'nome'         => $nome,
-            'sobrenome'    => $sobrenome,
+            'nome'         => $nome . ' ' . $sobrenome,
             'cpf'          => $cpf,
             'rg'           => $rg,
             'senha'        => password_hash($senha, PASSWORD_DEFAULT),
@@ -248,12 +247,12 @@ final class Login extends Base
             error_log('[preRegister] ' . $e->getMessage());
             return $this->json($response, [
                 'status' => false,
-                'msg'    => 'Erro ao realizar pré-cadastro. Tente novamente.',
+                'msg'    => 'Erro ao realizar pré-cadastro. Tente novamente.' . $e->getMessage(),
                 'id'     => 0,
             ], 500);
         }
     }
-     public function google($request, $response)
+    public function google($request, $response)
     {
         $form = $request->getParsedBody();
         $credential = $form['credential'] ?? null;
