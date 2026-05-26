@@ -151,7 +151,6 @@ services:
       DB_USER: ${DB_USER}
       # Senha do banco
       DB_PASSWORD: ${DB_PASSWORD}
-
       # Host do Redis
       REDIS_HOST: ${REDIS_HOST}
       # Porta do Redis com fallback 6379
@@ -168,7 +167,6 @@ services:
       REDIS_READ_TIMEOUT: ${REDIS_READ_TIMEOUT:-2.5}
       # Liga conexões persistentes do PHP com o Redis
       REDIS_PERSISTENT: ${REDIS_PERSISTENT:-1}
-
       # Modo dinâmico do gerenciador de processos do PHP-FPM
       PHP_FPM_PM: dynamic
       # Número máximo de workers PHP-FPM

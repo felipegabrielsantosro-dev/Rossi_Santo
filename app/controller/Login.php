@@ -34,7 +34,7 @@ final class Login extends Base
         try {
             # Começa a montar a query: SELECT * FROM vw_user
             $qb = \app\database\DB::select('*')
-                ->from('vw_user');
+                ->from('users');
 
             # Define o valor que será procurado nos três campos
             # O Doctrine cria um "placeholder seguro" no lugar do valor real,
@@ -44,8 +44,7 @@ final class Login extends Base
             # Monta a cláusula WHERE com três condições ligadas por OR:
             # WHERE cpf = :login OR email = :login OR whatsapp = :login
             $qb->where('cpf = ' . $login)
-                ->orWhere('email = '    . $login)
-                ->orWhere('telefone = ' . $login);
+                ->orWhere('email = '    . $login);
 
             # Executa a query e busca um único registro (a primeira linha encontrada)
             $user = $qb->fetchAssociative();
