@@ -7,14 +7,14 @@ namespace app\database\migration;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20260506210938 extends AbstractMigration
+final class Version20260528210649 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Users';
+        return 'users';
     }
 
-    public function up(Schema $schema): void
+     public function up(Schema $schema): void
     {
         $table = $schema->createTable('users');
         $table->addColumn('id',            'bigint', ['autoincrement' => true]);

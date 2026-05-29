@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 # Importa as classes PSR-7 do Slim para simular requisições HTTP
-use Slim\Psr7\Factory\RequestFactory;
 use Slim\Psr7\Factory\ResponseFactory;
+use Slim\Psr7\Factory\ServerRequestFactory;
 use Slim\Psr7\Factory\StreamFactory;
 
 # Instancia o controller antes de cada teste
@@ -16,7 +16,7 @@ beforeEach(function () {
 # Função auxiliar que cria uma requisição POST com body simulado
 function createPostRequest(array $body): \Psr\Http\Message\ServerRequestInterface
 {
-    $request = (new RequestFactory())->createRequest('POST', '/cliente/update');
+    $request = (new ServerRequestFactory())->createServerRequest('POST', '/cliente/update');
 
     return $request
         ->withHeader('Content-Type', 'application/x-www-form-urlencoded')

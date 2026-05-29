@@ -18,7 +18,6 @@ final class Home extends Base
                 ->withHeader('Content-Type', 'text/html')
                 ->withStatus(200);
         } catch (\Exception $e) {
-            var_dump($e->getMessage());
         }
     }
 }

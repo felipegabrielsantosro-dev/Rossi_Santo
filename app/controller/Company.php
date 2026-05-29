@@ -69,7 +69,7 @@ final class Company extends Base
                     'status' => false,
                     'msg' => 'Restrição: ' . $IsInserted,
                     'id' => 0
-                ], 500);
+                ], 201);
             }
 
             $id = \app\database\DB::select('id')
@@ -88,7 +88,7 @@ final class Company extends Base
                 'status' => false,
                 'msg' => 'Restrição: ' . $e->getMessage(),
                 'id' => 0
-            ], 500);
+            ], 201);
         }
     }
 

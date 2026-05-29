@@ -1,35 +1,30 @@
 <?php
 
+
 declare(strict_types=1);
 
-use Slim\Psr7\Factory\RequestFactory;
 use Slim\Psr7\Factory\ResponseFactory;
+use Slim\Psr7\Factory\ServerRequestFactory;
 
-test('supplier create com dados validos retorna 201 com status true', function () {
-
-    $request = (new RequestFactory())
-        ->createRequest('POST', '/supplier')
+test('insertSupplier com dados validos retorna 200 com status true', function () {
+    $request = (new ServerRequestFactory())
+        ->createServerRequest('POST', '/supplier/insert')
         ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
         ->withParsedBody([
-            'nome' => 'Fornecedor ABC LTDA',
-            'cnpj' => '12.345.678/0001-99',
-            'email' => 'contato@fornecedorabc.com',
-            'telefone' => '68999999999',
-            'responsavel' => 'Maria Oliveira',
-            'endereco' => 'Rua Exemplo',
-            'numero' => '100',
-            'bairro' => 'Centro',
-            'cidade' => 'Rio Branco',
-            'estado' => 'AC',
-            'cep' => '69900-000',
-            'senhaCadastro' => '123456'
+            'nomeExibicao' => 'PANINI LTDA',
+            'nomeLegal' => 'tamo colecionando as figurinhas',
+            'numeroDocumento' => '654.321.238-09',
+            'registroSecundario' => '234.567.890-1',
+            'dataRegistro' => '2020-02-09',
+            'ativo' => 'true'
         ]);
 
     $response = (new ResponseFactory())->createResponse();
 
-    $result = (new app\controller\Supplier())->create($request, $response);
+    $result = (new app\controller\Supplier())->insert($request, $response);
 
     $result->getBody()->rewind();
+
 
     $json = json_decode($result->getBody()->getContents(), true);
 
@@ -37,5 +32,7 @@ test('supplier create com dados validos retorna 201 com status true', function (
 
     expect($json['status'])->toBeTrue();
 
-    expect($json['msg'])->toContain('Fornecedor criado com sucesso');
+    expect($json['msg'])->toContain('Fornecedor salvo com sucesso!');
+
+
 });

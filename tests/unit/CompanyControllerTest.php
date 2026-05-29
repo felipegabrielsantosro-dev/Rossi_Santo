@@ -1,35 +1,37 @@
 <?php
 
+
 declare(strict_types=1);
 
-use Slim\Psr7\Factory\RequestFactory;
 use Slim\Psr7\Factory\ResponseFactory;
+use Slim\Psr7\Factory\ServerRequestFactory;
 
-test('company create com dados validos retorna 201 com status true', function () {
-
-    $request = (new RequestFactory())
-        ->createRequest('POST', '/company')
+test('insertEnterprise com dados validos retorna 200 com status true', function () {
+    $request = (new ServerRequestFactory())
+        ->createServerRequest('POST', '/enterprise/insert')
         ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
         ->withParsedBody([
-            'nome' => 'Empresa Teste LTDA',
-            'cnpj' => '12.345.678/0001-99',
-            'email' => 'contato@empresateste.com',
-            'telefone' => '68999999999',
-            'responsavel' => 'João Silva',
-            'senhaCadastro' => '123456'
+            'nomeExibicao' => 'Verstappen',
+            'nomeLegal' => 'dan dan dan LTD',
+            'numeroDocumento' => '932.109.876-00',
+            'registroSecundario' => '9654321',
+            'ativo' => 'true'
         ]);
 
     $response = (new ResponseFactory())->createResponse();
 
-    $result = (new app\controller\Company())->create($request, $response);
+    $result = (new app\controller\Company())->insert($request, $response);
 
     $result->getBody()->rewind();
+
 
     $json = json_decode($result->getBody()->getContents(), true);
 
     expect($result->getStatusCode())->toBe(201);
-
+    
     expect($json['status'])->toBeTrue();
 
-    expect($json['msg'])->toContain('Empresa criada com sucesso');
+    expect($json['msg'])->toContain('Salvo com sucesso!');
+
+
 });

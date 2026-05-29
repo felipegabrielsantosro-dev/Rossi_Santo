@@ -53,13 +53,13 @@ final class Customer extends Base
         try {
             $IsInserted = \app\database\DB::connection()->insert('customer', $FieldsAndValues);
             if (!$IsInserted) {
-                return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $IsInserted, 'id' => 0], 500);
+                return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $IsInserted, 'id' => 0], 201);
             }
             $id = \app\database\DB::select('id')->from('customer')->fetchAssociative();
 
             return $this->json($response, ['status' => true, 'msg' => 'Salvo com sucesso!', 'id' => $id['id']], 201);
         } catch (\Exception $e) {
-            return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $e->getMessage(), 'id' => 0], 500);
+            return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $e->getMessage(), 'id' => 0], 201);
         }
     }
     public function update($request, $response)
@@ -67,7 +67,7 @@ final class Customer extends Base
         $form = $request->getParsedBody();
         $id = $form['id'] ?? null;
         if (is_null($id)) {
-            return $this->json($response, ['status' => false, 'msg' => 'Por favor informe o ID do registro', 'id' => 0], 403);
+            return $this->json($response, ['status' => false, 'msg' => 'Por favor informe o ID do registro', 'id' => 0], 201);
         }
         $FieldsAndValues = [
             'nome_fantasia' => $form['nomeExibicao'] ?? null,
@@ -80,11 +80,11 @@ final class Customer extends Base
         try {
             $IsUpdated = \app\database\DB::connection()->update('customer', $FieldsAndValues, ['id' => $id]);
             if (!$IsUpdated) {
-                return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $IsUpdated, 'id' => 0], 403);
+                return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $IsUpdated, 'id' => 0], 201);
             }
             return $this->json($response, ['status' => true, 'msg' => 'Alterado com sucesso!', 'id' => $id], 201);
         } catch (\Exception $e) {
-            return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $e->getMessage(), 'id' => 0], 500);
+            return $this->json($response, ['status' => false, 'msg' => 'Restrição: ' . $e->getMessage(), 'id' => 0], 201);
         }
     }
     public function delete($request, $response)

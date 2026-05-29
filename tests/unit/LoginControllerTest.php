@@ -3,13 +3,13 @@
 
 declare(strict_types=1);
 
-use Slim\Psr7\Factory\RequestFactory;
 use Slim\Psr7\Factory\ResponseFactory;
+use Slim\Psr7\Factory\ServerRequestFactory;
 
 
 test('preRegister com dados validos retorna 200 com status true', function () {
-    $request = (new RequestFactory())
-        ->createRequest('POST', '/authentication/preregister')
+    $request = (new ServerRequestFactory())
+        ->createServerRequest('POST', '/authentication/preregister')
         ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
         ->withParsedBody([
             'nome' => 'Felipe',

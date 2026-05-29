@@ -73,7 +73,7 @@ final class Users extends Base
                 'status' => true,
                 'msg' => 'Salvo com sucesso!',
                 'id' => $id['id']
-            ], 201);
+            ], 200);
         } catch (\Exception $e) {
             return $this->json($response, [
                 'status' => false,
@@ -126,7 +126,9 @@ final class Users extends Base
                 'status' => true,
                 'msg' => 'Alterado com sucesso!',
                 'id' => $id
-            ], 201);
+            ], 201
+            
+                                      );
         } catch (\Exception $e) {
             return $this->json($response, [
                 'status' => false,
